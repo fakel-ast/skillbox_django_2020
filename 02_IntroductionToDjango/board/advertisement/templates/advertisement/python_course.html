@@ -1,16 +1,11 @@
-<!doctype html>
-<html lang="ru">
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-<img src="{{ MEDIA_URL }}image/python.png" alt="python_course" width="700"> <br>
-<a href="https://skillbox.ru/course/profession-python/">Ссылка на курс по питону</a>
-<h4>Цена решения 3 хандред бакса</h4>
-</body>
-</html>
+{% extends "advertisement/base.html"%}
+
+{% block title %}
+    python_course
+{% endblock %}
+
+{% block content %}
+    <img src="{{ MEDIA_URL }}image/python.png" alt="python_course" width="700"> <br>
+    <a href="https://skillbox.ru/course/profession-python/">Ссылка на курс по питону</a>
+    <h4>Цена решения 3 хандред бакса</h4>
+{% endblock %}

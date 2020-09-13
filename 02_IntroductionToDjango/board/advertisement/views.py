@@ -1,25 +1,16 @@
 from django.shortcuts import render
 
 
-def python_course_views(request, *args, **kwargs):
-    return render(request, "advertisement/python_course.html", {})
+def course_view(request, id_course, *args, **kwargs):
+    return render(request, "advertisement/" + str(id_course) + ".html")
 
 
-def java_course_views(request, *args, **kwargs):
-    return render(request, "advertisement/java_course.html", {})
-
-
-def web_developer_course_views(request, *args, **kwargs):
-    return render(request, "advertisement/web_developer.html", {})
-
-
-def frontend_course_views(request, *args, **kwargs):
-    return render(request, "advertisement/frontend.html", {})
-
-
-def ios_developer_course_views(request, *args, **kwargs):
-    return render(request, "advertisement/ios_developer.html", {})
-
-
-def home_views(request, *args, **kwargs):
-    return render(request, "advertisement/home.html", {})
+def home_view(request, *args, **kwargs):
+    dict_courses = [
+        {"python_course": "Курс по питону"},
+        {"java_course": "Курс по джаве"},
+        {"web_developer": "Курс по веб разработке"},
+        {"frontend": "Курс по фронтэенд разработке"},
+        {"ios_developer": "Курс по ios разработке"},
+    ]
+    return render(request, "advertisement/home.html", context={"dict_courses": dict_courses})

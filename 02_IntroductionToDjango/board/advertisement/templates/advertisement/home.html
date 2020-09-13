@@ -1,17 +1,16 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "advertisement/base.html"%}
+
+{% block title %}
+    home
+{% endblock %}
+
+{% block content %}
     <h1>Прошел все курсы на SkillBox. Продаю готовые домашние задания.</h1>
     <ul>
-        <li><a href="{% url "python_course" %}">Курс по питону</a></li>
-        <li><a href="{% url "java_course" %}">Курс по джаве</a></li>
-        <li><a href="{% url "web_developer_course" %}">Курс по веб разработке</a></li>
-        <li><a href="{% url "frontend_course" %}">Курс по frontend</a></li>
-        <li><a href="{% url "ios_developer_course" %}">Курс по ios разработке</a></li>
+        {% for course in dict_courses %}
+            {% for key, value in course.items %}
+                <li><a href="{{ key }}">{{ value }}</a></li>
+            {% endfor %}
+        {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}

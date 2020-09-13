@@ -132,3 +132,6 @@ dmypy.json
 
 # Jetbrains Intellij IDEA
 .idea/
+
+# media
+/02_IntroductionToDjango/board/media/
