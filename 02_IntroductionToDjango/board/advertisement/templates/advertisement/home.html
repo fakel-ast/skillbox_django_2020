@@ -7,9 +7,8 @@
 {% block content %}
     <h1>Прошел все курсы на SkillBox. Продаю готовые домашние задания.</h1>
     <ul>
-        {% for name_course, content_course in dict_courses.items %}
-            <li><a href="{{ name_course }}"> {{ content_course.text }}</a></li>
+        {% for course in dict_courses %}
+            <li><a href="{{ course.slug }}"> {{ course.text }}</a></li>
         {% endfor %}
-
     </ul>
 {% endblock %}

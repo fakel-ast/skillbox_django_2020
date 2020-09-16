@@ -1,0 +1,11 @@
+{% extends "advertisement/base.html"%}
+
+{% block title %}
+    {{ course.title }}
+{% endblock %}
+
+{% block content %}
+    <img src="{{ course.img }}" alt="course_image" width="700"><br>
+    <a href="{{ course.link_about }}">Ссылка на курс</a>
+    <h4>{{ course.price }}</h4>
+{% endblock %}
