@@ -50,8 +50,7 @@ def advertisement_course_detail_view(request, course_slug, *args, **kwargs):
     for course in courses:
         if course_slug in course["slug"]:
             return render(request, "advertisement/advertisement_course_detail.html", context={"course": course})
-        else:
-            return HttpResponse("<h1>Страница не найдена</h1>")
+        return HttpResponse("<h1>Страница не найдена</h1>")
 
 
 def home_view(request, *args, **kwargs):
