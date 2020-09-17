@@ -1,7 +1,8 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 
 
-dict_courses = [
+courses = [
     {
         "slug": "python_course",
         "title": "python",
@@ -46,10 +47,12 @@ dict_courses = [
 
 
 def advertisement_course_detail_view(request, course_slug, *args, **kwargs):
-    for course in dict_courses:
+    for course in courses:
         if course_slug in course["slug"]:
             return render(request, "advertisement/advertisement_course_detail.html", context={"course": course})
+        else:
+            return HttpResponse("<h1>Страница не найдена</h1>")
 
 
 def home_view(request, *args, **kwargs):
-    return render(request, "advertisement/home.html", context={"dict_courses": dict_courses})
+    return render(request, "advertisement/home.html", context={"dict_courses": courses})
