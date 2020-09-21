@@ -5,8 +5,8 @@
     <title>Title</title>
 </head>
 <body>
-{{ number }} <br>
-{{ email }}
-
+{% for contact_info in company_info %}
+    {{ contact_info.0 }}: {{ contact_info.1 }} <br>
+{% endfor %}
 </body>
 </html>

@@ -5,7 +5,8 @@
     <title>Title</title>
 </head>
 <body>
-Название - {{ name }} <br>
-Описание - {{ description }}
+{% for contact_info in company_info %}
+    {{ contact_info.0 }}: {{ contact_info.1 }} <br>
+{% endfor %}
 </body>
 </html>
