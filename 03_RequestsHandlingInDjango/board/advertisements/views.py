@@ -1,71 +1,52 @@
 from django.http import HttpResponse
-from django.shortcuts import render
-from django.views import View
+from django.views.generic import TemplateView
 
 
-company_info = [
-    {
-        "address": "Vologda, Dalinaya 32",
-        "number": "8976-543-21-00",
-        "email": "email@ya.ru",
-        "name": "ООО Починка Стульев",
-        "description": "Делаем стулья просто и быстро, и удобно. Покупайте только у нас!!!"
-    }
-]
+class HomeView(TemplateView):
+    template_name = "advertisements/home.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["regions"] = ["Вологда", "Москва", "Ярославль", "Кириллов"]
+        context["categories"] = ["личные вещи", "транспорт", "хобби", "отдых"]
+        return context
 
 
-class HomeView(View):
+class ContactsView(TemplateView):
+    template_name = "advertisements/contacts.html"
 
-    advertisements_info = {
-        "regions": ["Вологда", "Москва", "Ярославль", "Кириллов"],
-        "categories": ["личные вещи", "транспорт", "хобби", "отдых"],
-    }
-
-    def get(self, request):
-        return render(request, 'advertisements/home.html', context={"advertisements_info": self.advertisements_info})
-
-
-class ContactsView(View):
-    info = []
-    for company in company_info:
-        for key, value in company.items():
-            if key in ["address", "number", "email"]:
-                info.append((key, value))
-
-    def get(self, request):
-        return render(request, 'advertisements/contacts.html', context={"company_info": self.info})
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["address"] = "Vologda, Dalinaya 32"
+        context["number"] = "8976-543-21-00"
+        context["email"] = "email@ya.ru"
+        return context
 
 
-class AboutView(View):
-    info = []
-    for company in company_info:
-        for key, value in company.items():
-            if key in ["name", "description"]:
-                info.append((key, value))
+class AboutView(TemplateView):
+    template_name = "advertisements/about.html"
 
-    def get(self, request):
-        return render(request, 'advertisements/about.html', context={"company_info": self.info})
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["name"] = "ООО Починка Стульев"
+        context["description"] = "Делаем стулья просто и быстро, и удобно. Покупайте только у нас!!!"
+        return context
 
 
-class AdvertisementsListsView(View):
-
+class AdvertisementsListsView(TemplateView):
     counter = {
         "count_request": 0
     }
+    template_name = "advertisements/advertisements_detail.html"
 
-    advertisements = [
-        'Мастер на час',
-        'Выведение из запоя',
-        'Услуги экскаватора-погрузчика, гидромолота, ямобура',
-        'Покупка лома за дорого',
-        'Продажа волос за дешиво',
-    ]
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["advertisements"] = ["Мастер на час", "Выведение из запоя",
+                                     "Услуги экскаватора-погрузчика, гидромолота, ямобура"
+                                     "Покупка лома за дорого", "Продажа волос за дешиво"]
+        context["count_request"] = self.counter["count_request"]
+        return context
 
-    def get(self, request):
+    def post(self, request, *args, **kwargs):
         self.counter["count_request"] += 1
-        return render(request, 'advertisements/advertisements_detail.html',
-                      context={'advertisements': self.advertisements,
-                               'count_request': self.counter["count_request"]})
-
-    def post(self, request):
         return HttpResponse('Запись успешно создана')

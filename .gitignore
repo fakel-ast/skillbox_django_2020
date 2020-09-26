@@ -135,3 +135,6 @@ dmypy.json
 
 # media
 /02_IntroductionToDjango/board/media/
+
+# users logs
+03_RequestsHandlingInDjango/board/info/

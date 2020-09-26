@@ -8,7 +8,7 @@
         <p><strong>Выбор категории</strong></p>
         <p>
             <select name="select"multiple>
-                {% for category in advertisements_info.categories %}
+                {% for category in categories %}
                     <option>{{ category }}</option>
                 {% endfor %}
             </select>
@@ -18,7 +18,7 @@
         <p><strong>Выбор региона</strong></p>
         <p>
             <select name="select"multiple>
-                {% for region in advertisements_info.regions %}
+                {% for region in regions %}
                     <option>{{ region }}</option>
                 {% endfor %}
             </select>
