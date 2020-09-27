@@ -2,6 +2,11 @@ from django.http import HttpResponse
 from django.views.generic import TemplateView
 
 
+counter = {
+    "count_request": 0
+}
+
+
 class HomeView(TemplateView):
     template_name = "advertisements/home.html"
 
@@ -34,19 +39,19 @@ class AboutView(TemplateView):
 
 
 class AdvertisementsListsView(TemplateView):
-    counter = {
-        "count_request": 0
-    }
     template_name = "advertisements/advertisements_detail.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["advertisements"] = ["Мастер на час", "Выведение из запоя",
-                                     "Услуги экскаватора-погрузчика, гидромолота, ямобура"
-                                     "Покупка лома за дорого", "Продажа волос за дешиво"]
-        context["count_request"] = self.counter["count_request"]
+
+        context["advertisements"] = [
+            'Мастер на час', 'Выведение из запоя',
+            'Услуги экскаватора-погрузчика, гидромолота, ямобура'
+        ]
+
+        context["count_request"] = counter["count_request"]
         return context
 
     def post(self, request, *args, **kwargs):
-        self.counter["count_request"] += 1
+        counter["count_request"] += 1
         return HttpResponse('Запись успешно создана')
