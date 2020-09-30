@@ -1,10 +1,8 @@
 from django.http import HttpResponse
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, RedirectView
 
 
-counter = {
-    "count_request": 0
-}
+count_request = 0
 
 
 class HomeView(TemplateView):
@@ -39,7 +37,7 @@ class AboutView(TemplateView):
 
 
 class AdvertisementsListsView(TemplateView):
-    template_name = "advertisements/advertisements_detail.html"
+    template_name = "advertisements/advertisements_list.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -49,9 +47,10 @@ class AdvertisementsListsView(TemplateView):
             'Услуги экскаватора-погрузчика, гидромолота, ямобура'
         ]
 
-        context["count_request"] = counter["count_request"]
+        context["count_request"] = count_request
         return context
 
     def post(self, request, *args, **kwargs):
-        counter["count_request"] += 1
-        return HttpResponse('Запись успешно создана')
+        global count_request
+        count_request += 1
+        return HttpResponse('Объявление успешно создана')
