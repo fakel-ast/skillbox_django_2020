@@ -1,5 +1,4 @@
-from django.http import HttpResponse
-from django.views.generic import TemplateView, RedirectView
+from django.views.generic import TemplateView
 
 
 count_request = 0
@@ -20,9 +19,11 @@ class ContactsView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["address"] = "Vologda, Dalinaya 32"
-        context["number"] = "8976-543-21-00"
-        context["email"] = "email@ya.ru"
+        context["company"] = {
+            "address": "Vologda, Dalinaya 32",
+            "number": "8976-543-21-00",
+            "email": "email@ya.ru",
+        }
         return context
 
 
@@ -31,8 +32,10 @@ class AboutView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["name"] = "ООО Починка Стульев"
-        context["description"] = "Делаем стулья просто и быстро, и удобно. Покупайте только у нас!!!"
+        context["company"] = {
+            "name": "ООО Починка Стульев",
+            "description": "Делаем стулья просто и быстро, и удобно. Покупайте только у нас!!!",
+        }
         return context
 
 
@@ -53,4 +56,8 @@ class AdvertisementsListsView(TemplateView):
     def post(self, request, *args, **kwargs):
         global count_request
         count_request += 1
-        return HttpResponse('Объявление успешно создана')
+
+        context = self.get_context_data(**kwargs)
+        context['post_response'] = 'Статья успешно создана'
+
+        return self.render_to_response(context)
