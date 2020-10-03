@@ -5,29 +5,28 @@
 </head>
 <body>
     <form>
+        {% csrf_token %}
         <p><strong>Выбор категории</strong></p>
-        <p>
             <select name="select"multiple>
                 {% for category in categories %}
                     <option>{{ category }}</option>
                 {% endfor %}
             </select>
-        </p>
-    </form>
-    <form>
-        <p><strong>Выбор региона</strong></p>
+
         <p>
+            <strong>Выбор региона</strong>
+        </p>
             <select name="select"multiple>
                 {% for region in regions %}
                     <option>{{ region }}</option>
                 {% endfor %}
             </select>
+
+        <p>
+            <strong>Введите название объявления:</strong><br>
+            <input type="text" size="30" placeholder="Название объявления">
         </p>
+        <input type="submit" value="Найти объявление">
     </form>
-    <p>
-        <strong>Введите название объявления:</strong> <br>
-        <input type="text" size="30" placeholder="Название объявления">
-    </p>
-    <input type="submit" value="Найти объявление"></p>
 </body>
 </html>
