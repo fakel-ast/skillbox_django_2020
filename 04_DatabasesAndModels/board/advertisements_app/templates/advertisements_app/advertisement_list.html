@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ advertisements_list.title }}</title>
+</head>
+<body>
+{% if advertisements_list %}
+ <ul>
+     {% for advertisement in advertisements_list %}
+         <li>
+             <a href="{{ advertisement.id }}">{{ advertisement.title }}</a> | {{ advertisement.price }} р | {{ advertisement.category }}
+         </li>
+     {% endfor %}
+{% else %}
+    <h3>Объявлений нету!</h3>
+{% endif %}
+ </ul>
+</body>
+</html>

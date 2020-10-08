@@ -1,0 +1,20 @@
+{% load usd_price %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ advertisement.title }}</title>
+</head>
+<body>
+<h1>{{ advertisement.title }}</h1>
+<p>Цена: {{ advertisement.price }}р Цена в долларах: {{ advertisement.price|usd_price }}$</p>
+<p>{{ advertisement.description }}</p>
+<p>Категория: {{ advertisement.category }}</p>
+<p>Тип: {{ advertisement.type }}</p>
+<h3>Контактная информация: </h3>
+<p>Автор: {{ advertisement.author }}</p>
+<p>Почта: {{ advertisement.author.email }}</p>
+<p>Телефон: {{ advertisement.author.phone_number }}</p>
+<p>Количество просмотров: {{ advertisement.views_count }}</p>
+</body>
+</html>

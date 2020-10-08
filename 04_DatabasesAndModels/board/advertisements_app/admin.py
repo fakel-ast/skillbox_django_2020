@@ -1,3 +1,22 @@
 from django.contrib import admin
+from advertisements_app.models import *
 
-# Register your models here.
+
+@admin.register(Advertisement)
+class Advertisements(admin.ModelAdmin):
+    pass
+
+
+@admin.register(AdvertisementAuthor)
+class Author(admin.ModelAdmin):
+    pass
+
+
+@admin.register(AdvertisementCategory)
+class Category(admin.ModelAdmin):
+    pass
+
+
+@admin.register(AdvertisementType)
+class Type(admin.ModelAdmin):
+    pass
