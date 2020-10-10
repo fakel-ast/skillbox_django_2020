@@ -5,8 +5,8 @@ class Advertisement(models.Model):
     title = models.CharField(max_length=100, verbose_name='Заголовок')
     description = models.TextField(max_length=1000, verbose_name='Описание')
     price = models.FloatField(default=0, verbose_name='Цена')
-    date_pub = models.DateTimeField(auto_now_add=True, verbose_name='Дата Публикации')
-    date_end_pub = models.DateTimeField(auto_now_add=True)
+    date_pub = models.DateTimeField(verbose_name='Дата Публикации')
+    date_end_pub = models.DateTimeField(verbose_name='Дата окончания публикации')
     views_count = models.IntegerField(default=0, verbose_name='Количество просмотров')
     author = models.ForeignKey('AdvertisementAuthor', default=None, null=True, on_delete=models.CASCADE,
                                related_name='advertisements', verbose_name='Автор')

@@ -6,7 +6,7 @@
 </head>
 <body>
 {% if advertisements_list %}
- <ul>
+<ul>
      {% for advertisement in advertisements_list %}
          <li>
              <a href="{{ advertisement.id }}">{{ advertisement.title }}</a> | {{ advertisement.price }} р | {{ advertisement.category }}
@@ -15,6 +15,6 @@
 {% else %}
     <h3>Объявлений нету!</h3>
 {% endif %}
- </ul>
+</ul>
 </body>
 </html>
