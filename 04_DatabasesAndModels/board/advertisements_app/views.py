@@ -1,5 +1,6 @@
-from advertisements_app.models import *
-from django.views.generic import ListView, DetailView
+from advertisements_app.models import Advertisement
+
+from django.views.generic import DetailView, ListView
 
 
 class AdvertisementsListView(ListView):
