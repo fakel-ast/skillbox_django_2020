@@ -1,6 +1,11 @@
 from django.contrib import admin
 
-from advertisements_app.models import Advertisement, AdvertisementAuthor, AdvertisementCategory, AdvertisementType
+from advertisements_app.models import (
+    Advertisement,
+    AdvertisementAuthor,
+    AdvertisementCategory,
+    AdvertisementType,
+)
 
 
 @admin.register(Advertisement)

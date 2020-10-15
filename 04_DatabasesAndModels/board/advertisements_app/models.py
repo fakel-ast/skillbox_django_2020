@@ -6,14 +6,14 @@ class Advertisement(models.Model):
     description = models.TextField(max_length=1000, verbose_name='Описание')
     price = models.FloatField(default=0, verbose_name='Цена')
     date_pub = models.DateTimeField(verbose_name='Дата Публикации')
-    date_end_pub = models.DateTimeField(verbose_name='Дата окончания публикации')
+    date_end_pub = models.DateTimeField(verbose_name='Дата окончания публикации', blank=True, null=True)
     views_count = models.IntegerField(default=0, verbose_name='Количество просмотров')
     author = models.ForeignKey('AdvertisementAuthor', default=None, null=True, on_delete=models.CASCADE,
-                               related_name='advertisements', verbose_name='Автор')
+                               related_name='advertisement_author', verbose_name='Автор')
     category = models.ForeignKey('AdvertisementCategory', default=None, null=True, on_delete=models.CASCADE,
-                                 related_name='advertisements', verbose_name='Категория')
-    type_advertisement = models.ForeignKey('AdvertisementType', default=None, null=True, on_delete=models.CASCADE,
-                                           related_name='advertisements', verbose_name='Тип')
+                                 related_name='advertisement_category', verbose_name='Категория')
+    advertisement_type = models.ForeignKey('AdvertisementType', default=None, null=True, on_delete=models.CASCADE,
+                                           related_name='advertisement_type', verbose_name='Тип')
 
     class Meta:
         verbose_name = 'Объявление'

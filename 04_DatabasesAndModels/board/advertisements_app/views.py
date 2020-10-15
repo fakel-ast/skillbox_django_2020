@@ -5,7 +5,7 @@ from django.views.generic import DetailView, ListView
 
 class AdvertisementsListView(ListView):
     model = Advertisement
-    template_name = 'advertisement_list.html'
+    template_name = 'advertisements_app/advertisement_list.html'
     context_object_name = 'advertisements_list'
 
 

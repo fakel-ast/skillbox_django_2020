@@ -1,7 +1,9 @@
 {% extends 'advertisements_app/base_advertisements.html' %}
+
 {% block title %}
     advertisements-list
 {% endblock title %}
+
 {% block content %}
     {% if advertisements_list %}
         <ul>
@@ -11,8 +13,7 @@
                  </li>
              {% endfor %}
         </ul>
-        {% else %}
-                <h3>Объявлений нету!</h3>
-        {% endif %}
-
+    {% else %}
+        <h3>Объявлений нету!</h3>
+    {% endif %}
 {% endblock content %}
